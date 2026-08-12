@@ -1,0 +1,861 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f8f8f8;
+    color: #222;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* =========================================
+   HERO / HOME
+========================================= */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+
+    background: url("./images/hero.jpg") center center / cover no-repeat;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Dark image overlay */
+
+.overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+nav {
+    position: fixed;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1450px;
+
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px 0 45px;
+
+    /* GLASS HOME NAVBAR */
+
+    background: rgba(20, 20, 20, 0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* =========================================
+   NAVBAR AFTER SCROLL
+========================================= */
+
+nav.scrolled {
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-color: rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    color: #d4af37;
+
+    font-size: 40px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
+nav ul {
+    display: flex;
+
+    align-items: center;
+
+    gap: 42px;
+
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+
+    cursor: pointer;
+}
+
+
+/* Dark links after scrolling */
+
+nav.scrolled ul li a {
+    color: #222;
+}
+
+
+/* Hover */
+
+nav ul li a:hover,
+nav.scrolled ul li a:hover {
+    color: #d4af37;
+}
+
+
+/* =========================================
+   BOOK NOW NAV BUTTON
+========================================= */
+
+.btn-nav {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px 30px;
+
+    background: #d4af37;
+
+    color: #111;
+
+    border-radius: 50px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
+    position: relative;
+
+    z-index: 10000;
+}
+
+.btn-nav:hover {
+    background: white;
+
+    color: #111;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO CONTENT
+========================================= */
+
+.hero-content {
+    position: absolute;
+
+    left: 8%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 5;
+
+    width: 80%;
+}
+
+/* =========================================
+   HERO TEXT
+========================================= */
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+
+    color: white;
+
+    font-size: clamp(55px, 7vw, 100px);
+
+    line-height: 1.02;
+
+    margin-bottom: 25px;
+}
+
+.hero-content p {
+    color: white;
+
+    font-size: clamp(17px, 2vw, 24px);
+
+    line-height: 1.6;
+
+    max-width: 700px;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   HERO BUTTONS
+========================================= */
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    position: relative;
+
+    z-index: 20;
+}
+
+.hero-buttons a {
+    position: relative;
+
+    z-index: 30;
+
+    cursor: pointer;
+}
+
+
+/* Book Appointment */
+
+.btn-primary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 34px;
+
+    background: #d4af37;
+
+    color: #fff;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: white;
+
+    color: #111;
+
+    transform: translateY(-3px);
+}
+
+
+/* Explore Services */
+
+.btn-secondary {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 34px;
+
+    background: transparent;
+
+    border: 1px solid white;
+
+    color: white;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: white;
+
+    color: #111;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about {
+    padding: 120px 8%;
+
+    background: white;
+
+    scroll-margin-top: 130px;
+}
+
+.about-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+.about-image,
+.about-text {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+
+    display: block;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.about-text h5 {
+    color: #d4af37;
+
+    font-size: 16px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+.about-text h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(40px, 5vw, 60px);
+
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.about-text p {
+    color: #666;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+    display: flex;
+
+    gap: 40px;
+
+    flex-wrap: wrap;
+}
+
+.stat h3 {
+    color: #d4af37;
+
+    font-family: 'Playfair Display', serif;
+
+    font-size: 38px;
+}
+
+.stat span {
+    color: #555;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services {
+    padding: 120px 8%;
+
+    background: #f8f8f8;
+
+    text-align: center;
+
+    scroll-margin-top: 130px;
+}
+
+.services h5 {
+    color: #d4af37;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.services h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(40px, 5vw, 60px);
+
+    margin-bottom: 60px;
+}
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.card {
+    background: white;
+
+    padding: 40px 28px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+
+    transition: 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.13);
+}
+
+.card h3 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #666;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   GALLERY
+========================================= */
+
+.gallery {
+    padding: 120px 8%;
+
+    background: white;
+
+    text-align: center;
+
+    scroll-margin-top: 130px;
+}
+
+.gallery h5 {
+    color: #d4af37;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.gallery h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(40px, 5vw, 60px);
+
+    margin-bottom: 55px;
+}
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+
+    height: 330px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    transition: 0.4s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   CONTACT / APPOINTMENT
+========================================= */
+
+.contact {
+    padding: 120px 8%;
+
+    background: #111;
+
+    color: white;
+
+    text-align: center;
+
+    scroll-margin-top: 130px;
+}
+
+.contact h5 {
+    color: #d4af37;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.contact h2 {
+    font-family: 'Playfair Display', serif;
+
+    font-size: clamp(40px, 5vw, 60px);
+
+    margin-bottom: 15px;
+}
+
+.contact > p {
+    color: #ccc;
+
+    margin-bottom: 40px;
+}
+
+
+/* FORM */
+
+.contact form {
+    max-width: 650px;
+
+    margin: 0 auto;
+}
+
+.contact input,
+.contact select {
+    width: 100%;
+
+    padding: 17px 18px;
+
+    margin-bottom: 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 15px;
+}
+
+.contact select {
+    cursor: pointer;
+}
+
+.contact button {
+    padding: 16px 35px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: #d4af37;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.contact button:hover {
+    background: white;
+
+    color: #111;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(50px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   JAVASCRIPT ANIMATION SUPPORT
+========================================= */
+
+.hidden {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 25px;
+
+    background: #0b0b0b;
+
+    color: #aaa;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+   nav {
+    position: fixed;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1450px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px 0 45px;
+
+    /* GLASS ONLY AT TOP */
+    background: rgba(20, 20, 20, 0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 30px;
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+
+    transition: background 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    nav {
+        top: 15px;
+
+        width: 94%;
+
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 12px 18px;
+
+        gap: 12px;
+
+        border-radius: 22px;
+    }
+
+    .logo {
+        font-size: 28px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 12px;
+    }
+
+    .btn-nav {
+        padding: 10px 16px;
+
+        font-size: 12px;
+    }
+
+    .hero-content {
+        padding: 120px 25px 60px;
+
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+
+        max-width: 330px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid img {
+        height: 300px;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+}

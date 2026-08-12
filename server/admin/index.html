@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Luxe Salon Admin Login</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .login-box {
+            width: 90%;
+            max-width: 420px;
+            padding: 45px;
+            background: #1c1c1c;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            background: #d4af37;
+            color: #111;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        #message {
+            margin-top: 20px;
+            color: #ff6b6b;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            LUXE
+        </div>
+
+        <h2>Admin Login</h2>
+
+        <form id="loginForm">
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Username"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <p id="message"></p>
+
+    </div>
+
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        loginForm.addEventListener("submit", async function(e) {
+
+            e.preventDefault();
+
+            const username =
+                document.getElementById("username").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            try {
+
+                const response = await fetch("/admin/login", {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+
+                    window.location.href = "/admin/dashboard.html";
+
+                } else {
+
+                    document.getElementById("message").textContent =
+                        result.message;
+
+                }
+
+            } catch (error) {
+
+                document.getElementById("message").textContent =
+                    "Could not connect to the server.";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

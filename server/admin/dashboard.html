@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Luxe Salon - Admin Dashboard</title>
+
+
+<style>
+
+/* ==========================
+   RESET
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==========================
+   BODY
+========================== */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    padding: 40px;
+}
+
+
+/* ==========================
+   HEADER
+========================== */
+
+.dashboard-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+h1 {
+
+    color: #d4af37;
+
+    margin-bottom: 10px;
+
+    font-size: 36px;
+
+}
+
+
+.subtitle {
+
+    color: #aaa;
+
+}
+
+
+/* ==========================
+   LOGOUT
+========================== */
+
+.logout-btn {
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #d4af37;
+
+    color: #111;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.logout-btn:hover {
+
+    background: white;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ==========================
+   STATISTICS
+========================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.stat-card {
+
+    background: #1c1c1c;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid #292929;
+
+    transition: 0.3s;
+
+}
+
+
+.stat-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #d4af37;
+
+}
+
+
+.stat-card h3 {
+
+    color: #aaa;
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+
+    text-transform: uppercase;
+
+}
+
+
+.stat-card p {
+
+    color: #d4af37;
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+}
+
+
+/* ==========================
+   DASHBOARD
+========================== */
+
+.dashboard {
+
+    background: #1c1c1c;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    overflow-x: auto;
+
+}
+
+
+.dashboard-title {
+
+    font-size: 24px;
+
+    margin-bottom: 25px;
+
+    color: white;
+
+}
+
+
+/* ==========================
+   SEARCH & FILTERS
+========================== */
+
+.filters {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.filters input,
+.filters select {
+
+    background: #111;
+
+    color: white;
+
+    border: 1px solid #333;
+
+    padding: 12px 15px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    outline: none;
+
+}
+
+
+.filters input:focus,
+.filters select:focus {
+
+    border-color: #d4af37;
+
+}
+
+
+.filters input[type="text"] {
+
+    min-width: 280px;
+
+}
+
+
+.clear-btn {
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #444;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.clear-btn:hover {
+
+    background: #d4af37;
+
+    color: #111;
+
+}
+
+
+/* ==========================
+   TABLE
+========================== */
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+th {
+
+    background: #d4af37;
+
+    color: #111;
+
+    padding: 18px;
+
+    text-align: left;
+
+}
+
+
+td {
+
+    padding: 18px;
+
+    border-bottom:
+        1px solid #333;
+
+}
+
+
+tr:hover {
+
+    background: #252525;
+
+}
+
+
+/* ==========================
+   STATUS
+========================== */
+
+.status {
+
+    padding:
+        7px 12px;
+
+    border-radius:
+        20px;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+}
+
+
+.pending {
+
+    background:
+        #d4af37;
+
+    color:
+        #111;
+
+}
+
+
+.confirmed {
+
+    background:
+        #4caf50;
+
+    color:
+        white;
+
+}
+
+
+.completed {
+
+    background:
+        #2196f3;
+
+    color:
+        white;
+
+}
+
+
+.cancelled {
+
+    background:
+        #f44336;
+
+    color:
+        white;
+
+}
+
+
+/* ==========================
+   ACTION BUTTONS
+========================== */
+
+.action-btn {
+
+    border: none;
+
+    padding:
+        8px 12px;
+
+    margin:
+        3px;
+
+    border-radius:
+        8px;
+
+    cursor:
+        pointer;
+
+    font-weight:
+        bold;
+
+    font-size:
+        12px;
+
+    transition:
+        0.2s;
+
+}
+
+
+.confirm-btn {
+
+    background:
+        #4caf50;
+
+    color:
+        white;
+
+}
+
+
+.complete-btn {
+
+    background:
+        #2196f3;
+
+    color:
+        white;
+
+}
+
+
+.cancel-btn {
+
+    background:
+        #f44336;
+
+    color:
+        white;
+
+}
+
+
+.delete-btn {
+
+    background:
+        #8b0000;
+
+    color:
+        white;
+
+}
+
+
+.action-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+    opacity:
+        0.85;
+
+}
+
+
+/* ==========================
+   EMPTY
+========================== */
+
+.empty {
+
+    text-align:
+        center;
+
+    color:
+        #aaa;
+
+    padding:
+        40px;
+
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 900px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding:
+            20px;
+
+    }
+
+
+    .dashboard-header {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap:
+            20px;
+
+    }
+
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .filters {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .filters input,
+    .filters select,
+    .clear-btn {
+
+        width:
+            100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================
+     HEADER
+========================== -->
+
+<div class="dashboard-header">
+
+    <div>
+
+        <h1>
+            Luxe Salon
+        </h1>
+
+        <p class="subtitle">
+            Appointment Dashboard
+        </p>
+
+    </div>
+
+
+    <button
+        class="logout-btn"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
+</div>
+
+
+<!-- ==========================
+     STATISTICS
+========================== -->
+
+<div class="stats">
+
+
+    <div class="stat-card">
+
+        <h3>
+            Total Appointments
+        </h3>
+
+        <p id="totalCount">
+            0
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>
+            Pending
+        </h3>
+
+        <p id="pendingCount">
+            0
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>
+            Confirmed
+        </h3>
+
+        <p id="confirmedCount">
+            0
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <h3>
+            Completed
+        </h3>
+
+        <p id="completedCount">
+            0
+        </p>
+
+    </div>
+
+
+</div>
+
+
+<!-- ==========================
+     APPOINTMENTS
+========================== -->
+
+<div class="dashboard">
+
+
+    <h2 class="dashboard-title">
+        Appointments
+    </h2>
+
+
+    <!-- ==========================
+         SEARCH & FILTER
+    ========================== -->
+
+    <div class="filters">
+
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search customer or phone..."
+            oninput="filterAppointments()"
+        >
+
+
+        <select
+            id="statusFilter"
+            onchange="filterAppointments()"
+        >
+
+            <option value="all">
+                All Status
+            </option>
+
+            <option value="Pending">
+                Pending
+            </option>
+
+            <option value="Confirmed">
+                Confirmed
+            </option>
+
+            <option value="Completed">
+                Completed
+            </option>
+
+            <option value="Cancelled">
+                Cancelled
+            </option>
+
+        </select>
+
+
+        <input
+            type="date"
+            id="dateFilter"
+            onchange="filterAppointments()"
+        >
+
+
+        <button
+            class="clear-btn"
+            onclick="clearFilters()"
+        >
+            Clear
+        </button>
+
+
+    </div>
+
+
+    <!-- ==========================
+         TABLE
+    ========================== -->
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>
+                    Customer
+                </th>
+
+                <th>
+                    Phone
+                </th>
+
+                <th>
+                    Service
+                </th>
+
+                <th>
+                    Date
+                </th>
+
+                <th>
+                    Time
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+        <tbody
+            id="appointmentsTable"
+        >
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty"
+                >
+
+                    Loading appointments...
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+</div>
+
+
+<!-- ==========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+
+/* ==========================
+   GLOBAL APPOINTMENTS
+========================== */
+
+let allAppointments = [];
+
+
+/* ==========================
+   LOAD APPOINTMENTS
+========================== */
+
+async function loadAppointments() {
+
+    try {
+
+        const response =
+            await fetch("/api/appointments");
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load appointments"
+            );
+
+        }
+
+
+        const appointments =
+            await response.json();
+
+
+        /* SAVE APPOINTMENTS */
+
+        allAppointments =
+            appointments;
+
+
+        /* UPDATE COUNTERS */
+
+        updateCounters(
+            appointments
+        );
+
+
+        /* DISPLAY */
+
+        displayAppointments(
+            appointments
+        );
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        document.getElementById(
+            "appointmentsTable"
+        ).innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty"
+                >
+
+                    Failed to load appointments.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+/* ==========================
+   UPDATE COUNTERS
+========================== */
+
+function updateCounters(
+    appointments
+) {
+
+    let pending = 0;
+
+    let confirmed = 0;
+
+    let completed = 0;
+
+
+    appointments.forEach(
+        appointment => {
+
+            if (
+                appointment.status ===
+                "Pending"
+            ) {
+
+                pending++;
+
+            }
+
+
+            if (
+                appointment.status ===
+                "Confirmed"
+            ) {
+
+                confirmed++;
+
+            }
+
+
+            if (
+                appointment.status ===
+                "Completed"
+            ) {
+
+                completed++;
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+        appointments.length;
+
+
+    document.getElementById(
+        "pendingCount"
+    ).textContent =
+        pending;
+
+
+    document.getElementById(
+        "confirmedCount"
+    ).textContent =
+        confirmed;
+
+
+    document.getElementById(
+        "completedCount"
+    ).textContent =
+        completed;
+
+}
+
+
+/* ==========================
+   SEARCH & FILTER
+========================== */
+
+function filterAppointments() {
+
+
+    const search =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const status =
+        document
+            .getElementById(
+                "statusFilter"
+            )
+            .value;
+
+
+    const date =
+        document
+            .getElementById(
+                "dateFilter"
+            )
+            .value;
+
+
+    const filtered =
+        allAppointments.filter(
+            appointment => {
+
+
+                const name =
+                    (
+                        appointment.name ||
+                        ""
+                    )
+                    .toLowerCase();
+
+
+                const phone =
+                    (
+                        appointment.phone ||
+                        ""
+                    )
+                    .toLowerCase();
+
+
+                const matchesSearch =
+                    name.includes(search) ||
+                    phone.includes(search);
+
+
+                const matchesStatus =
+                    status === "all" ||
+                    appointment.status ===
+                    status;
+
+
+                const matchesDate =
+                    !date ||
+                    appointment.date ===
+                    date;
+
+
+                return (
+                    matchesSearch &&
+                    matchesStatus &&
+                    matchesDate
+                );
+
+            }
+        );
+
+
+    displayAppointments(
+        filtered
+    );
+
+}
+
+
+/* ==========================
+   DISPLAY APPOINTMENTS
+========================== */
+
+function displayAppointments(
+    appointments
+) {
+
+
+    const table =
+        document.getElementById(
+            "appointmentsTable"
+        );
+
+
+    table.innerHTML = "";
+
+
+    if (
+        appointments.length === 0
+    ) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty"
+                >
+
+                    No matching appointments.
+
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    appointments.forEach(
+        appointment => {
+
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML = `
+
+                <td>
+                    ${appointment.name || ""}
+                </td>
+
+
+                <td>
+                    ${appointment.phone || ""}
+                </td>
+
+
+                <td>
+                    ${appointment.service || ""}
+                </td>
+
+
+                <td>
+                    ${appointment.date || ""}
+                </td>
+
+
+                <td>
+                    ${appointment.time || ""}
+                </td>
+
+
+                <td>
+
+                    <span
+                        class="status ${(
+                            appointment.status ||
+                            "Pending"
+                        ).toLowerCase()}"
+                    >
+
+                        ${
+                            appointment.status ||
+                            "Pending"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+
+                    ${
+                        appointment.status ===
+                        "Pending"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="action-btn confirm-btn"
+                            onclick="updateStatus('${appointment.id}', 'Confirmed')"
+                        >
+
+                            Confirm
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
+
+                    ${
+                        appointment.status ===
+                        "Confirmed"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="action-btn complete-btn"
+                            onclick="updateStatus('${appointment.id}', 'Completed')"
+                        >
+
+                            Complete
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
+
+                    ${
+                        appointment.status !==
+                        "Cancelled" &&
+                        appointment.status !==
+                        "Completed"
+
+                        ?
+
+                        `
+
+                        <button
+                            class="action-btn cancel-btn"
+                            onclick="updateStatus('${appointment.id}', 'Cancelled')"
+                        >
+
+                            Cancel
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
+
+                    <button
+                        class="action-btn delete-btn"
+                        onclick="deleteAppointment('${appointment.id}')"
+                    >
+
+                        Delete
+
+                    </button>
+
+
+                </td>
+
+            `;
+
+
+            table.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* ==========================
+   UPDATE STATUS
+========================== */
+
+async function updateStatus(
+    id,
+    status
+) {
+
+
+    try {
+
+        const response =
+            await fetch(
+    `/api/appointments/${id}/status`,
+    {
+        method: "PUT",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+                            status: status
+                        })
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to update"
+            );
+
+        }
+
+
+        await loadAppointments();
+
+
+        /* KEEP CURRENT FILTER */
+
+        filterAppointments();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Could not update appointment."
+        );
+
+    }
+
+}
+
+
+/* ==========================
+   DELETE APPOINTMENT
+========================== */
+
+async function deleteAppointment(
+    id
+) {
+
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete this appointment?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+           await fetch(
+    `/api/appointments/${id}`,
+    {
+        method: "DELETE"
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to delete"
+            );
+
+        }
+
+
+        await loadAppointments();
+
+
+        filterAppointments();
+
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Could not delete appointment."
+        );
+
+    }
+
+}
+
+
+/* ==========================
+   CLEAR FILTERS
+========================== */
+
+function clearFilters() {
+
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "statusFilter"
+    ).value = "all";
+
+
+    document.getElementById(
+        "dateFilter"
+    ).value = "";
+
+
+    filterAppointments();
+
+}
+
+
+/* ==========================
+   LOGOUT
+========================== */
+
+async function logout() {
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/logout",
+                {
+
+                    method: "POST"
+
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.success
+        ) {
+
+            window.location.href =
+                "/admin";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Logout failed."
+        );
+
+    }
+
+}
+
+
+/* ==========================
+   START DASHBOARD
+========================== */
+
+loadAppointments();
+
+
+</script>
+
+
+</body>
+
+</html>
