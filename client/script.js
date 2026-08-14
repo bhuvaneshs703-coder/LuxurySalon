@@ -199,7 +199,7 @@ if (appointmentForm) {
 
                 const response =
                     await fetch(
-                        "http://localhost:3000/appointments",
+                        "/appointments",
                         {
                             method: "POST",
 
